@@ -57,8 +57,8 @@ export function currencyEquals(currencyA: Currency, currencyB: Currency): boolea
 }
 
 export const WETH = {
-  [ChainId.MAINNET]: new Token(ChainId.MAINNET, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH'),
-  [ChainId.SEPOLIA]: new Token(ChainId.SEPOLIA, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH'),
-  [ChainId.HOPE]: new Token(ChainId.HOPE, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH')
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6', 18, 'WETH', 'Wrapper ETH'),
+  [ChainId.SEPOLIA]: new Token(ChainId.SEPOLIA, '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6', 18, 'WETH', 'Wrapper ETH'),
+  [ChainId.HOPE]: new Token(ChainId.HOPE, '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6', 18, 'WETH', 'Wrapper ETH')
 
 }
