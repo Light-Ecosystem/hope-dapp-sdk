@@ -7,7 +7,7 @@ import JSBI from 'jsbi'
 import { BigintIsh, Rounding, TEN } from '../../constants'
 import { Currency } from '../currency'
 import { Route } from '../route'
-import { Fraction, formatInF } from './fraction'
+import { Fraction } from './fraction'
 import { CurrencyAmount } from './currencyAmount'
 
 
@@ -71,7 +71,7 @@ export class Price extends Fraction {
     return this.adjusted.toSignificant(significantDigits, format, rounding)
   }
 
-  public toFixed(decimalPlaces: number = 4, format?: formatInF, rounding?: Rounding): string {
+  public toFixed(decimalPlaces: number = 4, format?: object, rounding?: Rounding): string {
     return this.adjusted.toFixed(decimalPlaces, format, rounding)
   }
 }

@@ -541,19 +541,7 @@ var Fraction = /*#__PURE__*/function () {
     !(decimalPlaces >= 0) ?  invariant(false, decimalPlaces + " is negative.")  : void 0;
     Big.DP = decimalPlaces;
     Big.RM = toFixedRounding[rounding];
-    var bigResNumber = new Big(this.numerator.toString()).div(this.denominator.toString());
-
-    if (format && format.groupSeparator === ',') {
-      var resVal = bigResNumber.toFormat(decimalPlaces, {
-        groupSeparator: ''
-      });
-
-      if (Number(resVal) > 0 && Number(resVal) < 0.01) {
-        return '< 0.01';
-      }
-    }
-
-    return bigResNumber.toFormat(decimalPlaces, format);
+    return new Big(this.numerator.toString()).div(this.denominator.toString()).toFormat(decimalPlaces, format);
   };
 
   _createClass(Fraction, [{

@@ -1,9 +1,5 @@
 import JSBI from 'jsbi';
 import { BigintIsh, Rounding } from '../../constants';
-export interface formatInF {
-    groupSeparator: string;
-    [key: string]: any;
-}
 export declare class Fraction {
     readonly numerator: JSBI;
     readonly denominator: JSBI;
@@ -19,5 +15,5 @@ export declare class Fraction {
     multiply(other: Fraction | BigintIsh): Fraction;
     divide(other: Fraction | BigintIsh): Fraction;
     toSignificant(significantDigits: number, format?: object, rounding?: Rounding): string;
-    toFixed(decimalPlaces: number, format?: formatInF, rounding?: Rounding): string;
+    toFixed(decimalPlaces: number, format?: object, rounding?: Rounding): string;
 }

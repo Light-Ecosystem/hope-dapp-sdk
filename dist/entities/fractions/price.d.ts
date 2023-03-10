@@ -1,7 +1,7 @@
 import { BigintIsh, Rounding } from '../../constants';
 import { Currency } from '../currency';
 import { Route } from '../route';
-import { Fraction, formatInF } from './fraction';
+import { Fraction } from './fraction';
 import { CurrencyAmount } from './currencyAmount';
 export declare class Price extends Fraction {
     readonly baseCurrency: Currency;
@@ -15,5 +15,5 @@ export declare class Price extends Fraction {
     multiply(other: Price): Price;
     quote(currencyAmount: CurrencyAmount): CurrencyAmount;
     toSignificant(significantDigits?: number, format?: object, rounding?: Rounding): string;
-    toFixed(decimalPlaces?: number, format?: formatInF, rounding?: Rounding): string;
+    toFixed(decimalPlaces?: number, format?: object, rounding?: Rounding): string;
 }
