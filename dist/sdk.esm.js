@@ -36,8 +36,8 @@ var Rounding;
   Rounding[Rounding["ROUND_UP"] = 2] = "ROUND_UP";
 })(Rounding || (Rounding = {}));
 
-var FACTORY_ADDRESS = '0x4B6cA9c75b38B2c0d282bAd5A6295a21069De50a';
-var INIT_CODE_HASH = '0x5df56819f9ea3fa82908f37ada1a8a2b88ea2dcea442be7f6db157f5a1e7ed7b';
+var FACTORY_ADDRESS = '0x0Ae07CF9825b419aE09FdfE3302fACB58C670EDa';
+var INIT_CODE_HASH = '0x8c587edc53bd0ef93b6b0e6bc4ac8b7831808aa02c4f97fac3ccf1dd34d95b35';
 var MINIMUM_LIQUIDITY = /*#__PURE__*/JSBI.BigInt(1000); // exports for internal consumption
 
 var ZERO = /*#__PURE__*/JSBI.BigInt(0);
@@ -541,19 +541,7 @@ var Fraction = /*#__PURE__*/function () {
     !(decimalPlaces >= 0) ? process.env.NODE_ENV !== "production" ? invariant(false, decimalPlaces + " is negative.") : invariant(false) : void 0;
     Big.DP = decimalPlaces;
     Big.RM = toFixedRounding[rounding];
-    var bigResNumber = new Big(this.numerator.toString()).div(this.denominator.toString());
-
-    if (format && format.groupSeparator === ',') {
-      var resVal = bigResNumber.toFormat(decimalPlaces, {
-        groupSeparator: ''
-      });
-
-      if (Number(resVal) > 0 && Number(resVal) < 0.01) {
-        return '< 0.01';
-      }
-    }
-
-    return bigResNumber.toFormat(decimalPlaces, format);
+    return new Big(this.numerator.toString()).div(this.denominator.toString()).toFormat(decimalPlaces, format);
   };
 
   _createClass(Fraction, [{
@@ -771,7 +759,7 @@ var Pair = /*#__PURE__*/function () {
   function Pair(tokenAmountA, tokenAmountB) {
     var tokenAmounts = tokenAmountA.token.sortsBefore(tokenAmountB.token) // does safety checks
     ? [tokenAmountA, tokenAmountB] : [tokenAmountB, tokenAmountA];
-    this.liquidityToken = new Token(tokenAmounts[0].token.chainId, Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token), 18, 'LT', 'light');
+    this.liquidityToken = new Token(tokenAmounts[0].token.chainId, Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token), 18, 'HOPE-SWAP', 'HOPE-SWAP');
     this.tokenAmounts = tokenAmounts;
   }
 

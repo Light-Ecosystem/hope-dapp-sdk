@@ -7,7 +7,7 @@ export enum ChainId {
   MAINNET = 1,
   SEPOLIA = 11155111,
   HOPE = 1337
-
+  
 }
 
 export enum TradeType {
@@ -21,9 +21,9 @@ export enum Rounding {
   ROUND_UP
 }
 
-export const FACTORY_ADDRESS = '0x4B6cA9c75b38B2c0d282bAd5A6295a21069De50a'
+export const FACTORY_ADDRESS = '0x0Ae07CF9825b419aE09FdfE3302fACB58C670EDa'
 
-export const INIT_CODE_HASH = '0x5df56819f9ea3fa82908f37ada1a8a2b88ea2dcea442be7f6db157f5a1e7ed7b'
+export const INIT_CODE_HASH = '0x8c587edc53bd0ef93b6b0e6bc4ac8b7831808aa02c4f97fac3ccf1dd34d95b35'
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
 

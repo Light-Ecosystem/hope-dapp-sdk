@@ -1,7 +1,7 @@
 import { Currency } from '../currency';
 import JSBI from 'jsbi';
 import { BigintIsh, Rounding } from '../../constants';
-import { Fraction, formatInF } from './fraction';
+import { Fraction } from './fraction';
 export declare class CurrencyAmount extends Fraction {
     readonly currency: Currency;
     /**
@@ -14,6 +14,6 @@ export declare class CurrencyAmount extends Fraction {
     add(other: CurrencyAmount): CurrencyAmount;
     subtract(other: CurrencyAmount): CurrencyAmount;
     toSignificant(significantDigits?: number, format?: object, rounding?: Rounding): string;
-    toFixed(decimalPlaces?: number, format?: formatInF, rounding?: Rounding): string;
+    toFixed(decimalPlaces?: number, format?: object, rounding?: Rounding): string;
     toExact(format?: object): string;
 }
