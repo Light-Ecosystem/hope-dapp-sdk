@@ -17,10 +17,11 @@ var networks = require('@ethersproject/networks');
 var providers = require('@ethersproject/providers');
 var IUniswapV2Pair = _interopDefault(require('@uniswap/v2-core/build/IUniswapV2Pair.json'));
 
-var _SOLIDITY_TYPE_MAXIMA;
+var _FACTORY_ADDRESS_MAP, _INIT_CODE_HASH_MAP, _SOLIDITY_TYPE_MAXIMA;
 
 (function (ChainId) {
   ChainId[ChainId["MAINNET"] = 1] = "MAINNET";
+  ChainId[ChainId["GOERLI"] = 5] = "GOERLI";
   ChainId[ChainId["SEPOLIA"] = 11155111] = "SEPOLIA";
   ChainId[ChainId["HOPE"] = 1337] = "HOPE";
 })(exports.ChainId || (exports.ChainId = {}));
@@ -36,6 +37,8 @@ var _SOLIDITY_TYPE_MAXIMA;
   Rounding[Rounding["ROUND_UP"] = 2] = "ROUND_UP";
 })(exports.Rounding || (exports.Rounding = {}));
 
+var FACTORY_ADDRESS_MAP = (_FACTORY_ADDRESS_MAP = {}, _FACTORY_ADDRESS_MAP[exports.ChainId.MAINNET] = '0xE4dC7Df7F3eD4C6CF046760D13AA17E829C82EE9', _FACTORY_ADDRESS_MAP[exports.ChainId.GOERLI] = '0xE4dC7Df7F3eD4C6CF046760D13AA17E829C82EE9', _FACTORY_ADDRESS_MAP[exports.ChainId.SEPOLIA] = '0xE4dC7Df7F3eD4C6CF046760D13AA17E829C82EE9', _FACTORY_ADDRESS_MAP[exports.ChainId.HOPE] = '0xE4dC7Df7F3eD4C6CF046760D13AA17E829C82EE9', _FACTORY_ADDRESS_MAP);
+var INIT_CODE_HASH_MAP = (_INIT_CODE_HASH_MAP = {}, _INIT_CODE_HASH_MAP[exports.ChainId.MAINNET] = '0x8c587edc53bd0ef93b6b0e6bc4ac8b7831808aa02c4f97fac3ccf1dd34d95b35', _INIT_CODE_HASH_MAP[exports.ChainId.GOERLI] = '0x8c587edc53bd0ef93b6b0e6bc4ac8b7831808aa02c4f97fac3ccf1dd34d95b35', _INIT_CODE_HASH_MAP[exports.ChainId.SEPOLIA] = '0x8c587edc53bd0ef93b6b0e6bc4ac8b7831808aa02c4f97fac3ccf1dd34d95b35', _INIT_CODE_HASH_MAP[exports.ChainId.HOPE] = '0x8c587edc53bd0ef93b6b0e6bc4ac8b7831808aa02c4f97fac3ccf1dd34d95b35', _INIT_CODE_HASH_MAP);
 var FACTORY_ADDRESS = '0xE4dC7Df7F3eD4C6CF046760D13AA17E829C82EE9';
 var INIT_CODE_HASH = '0x8c587edc53bd0ef93b6b0e6bc4ac8b7831808aa02c4f97fac3ccf1dd34d95b35';
 var MINIMUM_LIQUIDITY = /*#__PURE__*/JSBI.BigInt(1000); // exports for internal consumption
@@ -436,7 +439,7 @@ function currencyEquals(currencyA, currencyB) {
     return currencyA === currencyB;
   }
 }
-var WETH = (_WETH = {}, _WETH[exports.ChainId.MAINNET] = /*#__PURE__*/new Token(exports.ChainId.MAINNET, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.SEPOLIA] = /*#__PURE__*/new Token(exports.ChainId.SEPOLIA, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.HOPE] = /*#__PURE__*/new Token(exports.ChainId.HOPE, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH'), _WETH);
+var WETH = (_WETH = {}, _WETH[exports.ChainId.MAINNET] = /*#__PURE__*/new Token(exports.ChainId.MAINNET, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.GOERLI] = /*#__PURE__*/new Token(exports.ChainId.GOERLI, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.SEPOLIA] = /*#__PURE__*/new Token(exports.ChainId.SEPOLIA, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.HOPE] = /*#__PURE__*/new Token(exports.ChainId.HOPE, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH'), _WETH);
 
 var _toSignificantRoundin, _toFixedRounding;
 var Decimal = /*#__PURE__*/toFormat(_Decimal);
@@ -771,7 +774,7 @@ var Pair = /*#__PURE__*/function () {
     if (((_PAIR_ADDRESS_CACHE = PAIR_ADDRESS_CACHE) === null || _PAIR_ADDRESS_CACHE === void 0 ? void 0 : (_PAIR_ADDRESS_CACHE$t = _PAIR_ADDRESS_CACHE[tokens[0].address]) === null || _PAIR_ADDRESS_CACHE$t === void 0 ? void 0 : _PAIR_ADDRESS_CACHE$t[tokens[1].address]) === undefined) {
       var _PAIR_ADDRESS_CACHE2, _extends2, _extends3;
 
-      PAIR_ADDRESS_CACHE = _extends({}, PAIR_ADDRESS_CACHE, (_extends3 = {}, _extends3[tokens[0].address] = _extends({}, (_PAIR_ADDRESS_CACHE2 = PAIR_ADDRESS_CACHE) === null || _PAIR_ADDRESS_CACHE2 === void 0 ? void 0 : _PAIR_ADDRESS_CACHE2[tokens[0].address], (_extends2 = {}, _extends2[tokens[1].address] = address.getCreate2Address(FACTORY_ADDRESS, solidity.keccak256(['bytes'], [solidity.pack(['address', 'address'], [tokens[0].address, tokens[1].address])]), INIT_CODE_HASH), _extends2)), _extends3));
+      PAIR_ADDRESS_CACHE = _extends({}, PAIR_ADDRESS_CACHE, (_extends3 = {}, _extends3[tokens[0].address] = _extends({}, (_PAIR_ADDRESS_CACHE2 = PAIR_ADDRESS_CACHE) === null || _PAIR_ADDRESS_CACHE2 === void 0 ? void 0 : _PAIR_ADDRESS_CACHE2[tokens[0].address], (_extends2 = {}, _extends2[tokens[1].address] = address.getCreate2Address(FACTORY_ADDRESS_MAP[tokens[0].chainId], solidity.keccak256(['bytes'], [solidity.pack(['address', 'address'], [tokens[0].address, tokens[1].address])]), INIT_CODE_HASH_MAP[tokens[0].chainId]), _extends2)), _extends3));
     }
 
     return PAIR_ADDRESS_CACHE[tokens[0].address][tokens[1].address];
@@ -1572,9 +1575,11 @@ exports.Currency = Currency;
 exports.CurrencyAmount = CurrencyAmount;
 exports.ETHER = ETHER;
 exports.FACTORY_ADDRESS = FACTORY_ADDRESS;
+exports.FACTORY_ADDRESS_MAP = FACTORY_ADDRESS_MAP;
 exports.Fetcher = Fetcher;
 exports.Fraction = Fraction;
 exports.INIT_CODE_HASH = INIT_CODE_HASH;
+exports.INIT_CODE_HASH_MAP = INIT_CODE_HASH_MAP;
 exports.InsufficientInputAmountError = InsufficientInputAmountError;
 exports.InsufficientReservesError = InsufficientReservesError;
 exports.MINIMUM_LIQUIDITY = MINIMUM_LIQUIDITY;
