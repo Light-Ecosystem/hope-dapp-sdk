@@ -57,8 +57,8 @@ export function currencyEquals(currencyA: Currency, currencyB: Currency): boolea
 }
 
 export const WETH = {
-  [ChainId.MAINNET]: new Token(ChainId.MAINNET, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH'),
-  [ChainId.GOERLI]: new Token(ChainId.GOERLI, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH'),
-  [ChainId.SEPOLIA]: new Token(ChainId.SEPOLIA, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH'),
-  [ChainId.HOPE]: new Token(ChainId.HOPE, '0xb0Ac866E8951bC07efBF738580F7f17900cebE15', 18, 'WETH', 'Wrapper ETH')
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, '0xee44150250AfF3E6aC25539765F056EDb7F85D7B', 18, 'WETH', 'Wrapper ETH'),
+  [ChainId.GOERLI]: new Token(ChainId.GOERLI, '0xee44150250AfF3E6aC25539765F056EDb7F85D7B', 18, 'WETH', 'Wrapper ETH'),
+  [ChainId.SEPOLIA]: new Token(ChainId.SEPOLIA, '0xee44150250AfF3E6aC25539765F056EDb7F85D7B', 18, 'WETH', 'Wrapper ETH'),
+  [ChainId.HOPE]: new Token(ChainId.HOPE, '0xee44150250AfF3E6aC25539765F056EDb7F85D7B', 18, 'WETH', 'Wrapper ETH')
 }
