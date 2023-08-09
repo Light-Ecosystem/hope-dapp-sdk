@@ -23,14 +23,14 @@ export enum Rounding {
 
 export const FACTORY_ADDRESS_MAP:{[chainId: number]: string} = {
   [ChainId.MAINNET]: '0x26F53fbADeEb777fb2A122dC703433d79241b64e',
-  [ChainId.GOERLI]: '0x2a23e40939af1eC45694601DBDdf132a5a296d13',
+  [ChainId.GOERLI]: '0xa076eC77691e6247808366C3Af3fa5A75C77E2E8',
   [ChainId.SEPOLIA]: '0xe0EA1A132373FDa39F90EB9BbF438765D464677F',
   [ChainId.HOPE]: '0x4B480914A1375C93668Aa1369d11B42a9dAdC8e9'
 }
 
 export const INIT_CODE_HASH_MAP:{[chainId: number]: string} = {
   [ChainId.MAINNET]: '0x0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c',
-  [ChainId.GOERLI]: '0x8c587edc53bd0ef93b6b0e6bc4ac8b7831808aa02c4f97fac3ccf1dd34d95b35',
+  [ChainId.GOERLI]: '0x0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c',
   [ChainId.SEPOLIA]: '0x0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c',
   [ChainId.HOPE]: '0x0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c'
 }
