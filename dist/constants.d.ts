@@ -4,7 +4,11 @@ export declare enum ChainId {
     MAINNET = 1,
     GOERLI = 5,
     SEPOLIA = 11155111,
-    HOPE = 1337
+    HOPE = 1337,
+    BASE = 8453,
+    BASE_GOERLI = 84531,
+    ARBITRUM = 42161,
+    ARBITRUM_GOERLI = 421613
 }
 export declare enum TradeType {
     EXACT_INPUT = 0,

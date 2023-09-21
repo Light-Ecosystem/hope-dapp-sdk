@@ -24,6 +24,10 @@ var _FACTORY_ADDRESS_MAP, _INIT_CODE_HASH_MAP, _SOLIDITY_TYPE_MAXIMA;
   ChainId[ChainId["GOERLI"] = 5] = "GOERLI";
   ChainId[ChainId["SEPOLIA"] = 11155111] = "SEPOLIA";
   ChainId[ChainId["HOPE"] = 1337] = "HOPE";
+  ChainId[ChainId["BASE"] = 8453] = "BASE";
+  ChainId[ChainId["BASE_GOERLI"] = 84531] = "BASE_GOERLI";
+  ChainId[ChainId["ARBITRUM"] = 42161] = "ARBITRUM";
+  ChainId[ChainId["ARBITRUM_GOERLI"] = 421613] = "ARBITRUM_GOERLI";
 })(exports.ChainId || (exports.ChainId = {}));
 
 (function (TradeType) {
@@ -37,8 +41,8 @@ var _FACTORY_ADDRESS_MAP, _INIT_CODE_HASH_MAP, _SOLIDITY_TYPE_MAXIMA;
   Rounding[Rounding["ROUND_UP"] = 2] = "ROUND_UP";
 })(exports.Rounding || (exports.Rounding = {}));
 
-var FACTORY_ADDRESS_MAP = (_FACTORY_ADDRESS_MAP = {}, _FACTORY_ADDRESS_MAP[exports.ChainId.MAINNET] = '0x26F53fbADeEb777fb2A122dC703433d79241b64e', _FACTORY_ADDRESS_MAP[exports.ChainId.GOERLI] = '0xa076eC77691e6247808366C3Af3fa5A75C77E2E8', _FACTORY_ADDRESS_MAP[exports.ChainId.SEPOLIA] = '0x0a9293A2353aCf257050B7a5DC5AbDD5Ec3C4642', _FACTORY_ADDRESS_MAP[exports.ChainId.HOPE] = '0x4B480914A1375C93668Aa1369d11B42a9dAdC8e9', _FACTORY_ADDRESS_MAP);
-var INIT_CODE_HASH_MAP = (_INIT_CODE_HASH_MAP = {}, _INIT_CODE_HASH_MAP[exports.ChainId.MAINNET] = '0x0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c', _INIT_CODE_HASH_MAP[exports.ChainId.GOERLI] = '0x0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c', _INIT_CODE_HASH_MAP[exports.ChainId.SEPOLIA] = '0x0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c', _INIT_CODE_HASH_MAP[exports.ChainId.HOPE] = '0x0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c', _INIT_CODE_HASH_MAP);
+var FACTORY_ADDRESS_MAP = (_FACTORY_ADDRESS_MAP = {}, _FACTORY_ADDRESS_MAP[exports.ChainId.MAINNET] = '0x26F53fbADeEb777fb2A122dC703433d79241b64e', _FACTORY_ADDRESS_MAP[exports.ChainId.GOERLI] = '0xa076eC77691e6247808366C3Af3fa5A75C77E2E8', _FACTORY_ADDRESS_MAP[exports.ChainId.SEPOLIA] = '0x0a9293A2353aCf257050B7a5DC5AbDD5Ec3C4642', _FACTORY_ADDRESS_MAP[exports.ChainId.HOPE] = '0x4B480914A1375C93668Aa1369d11B42a9dAdC8e9', _FACTORY_ADDRESS_MAP[exports.ChainId.BASE] = '0x', _FACTORY_ADDRESS_MAP[exports.ChainId.BASE_GOERLI] = '0x610dF8861CdA0333AFeA456bEd9b69be29433fC4', _FACTORY_ADDRESS_MAP[exports.ChainId.ARBITRUM] = '0x', _FACTORY_ADDRESS_MAP[exports.ChainId.ARBITRUM_GOERLI] = '0x610dF8861CdA0333AFeA456bEd9b69be29433fC4', _FACTORY_ADDRESS_MAP);
+var INIT_CODE_HASH_MAP = (_INIT_CODE_HASH_MAP = {}, _INIT_CODE_HASH_MAP[exports.ChainId.MAINNET] = '0x0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c', _INIT_CODE_HASH_MAP[exports.ChainId.GOERLI] = '0x0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c', _INIT_CODE_HASH_MAP[exports.ChainId.SEPOLIA] = '0x0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c', _INIT_CODE_HASH_MAP[exports.ChainId.HOPE] = '0x0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c', _INIT_CODE_HASH_MAP[exports.ChainId.BASE] = '0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c', _INIT_CODE_HASH_MAP[exports.ChainId.BASE_GOERLI] = '0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c', _INIT_CODE_HASH_MAP[exports.ChainId.ARBITRUM] = '0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c', _INIT_CODE_HASH_MAP[exports.ChainId.ARBITRUM_GOERLI] = '0fe0976a8394a59cb43ce8ed266ed3ad7b48c0538114ef1bea17c3f7f4138f2c', _INIT_CODE_HASH_MAP);
 var MINIMUM_LIQUIDITY = /*#__PURE__*/JSBI.BigInt(1000); // exports for internal consumption
 
 var ZERO = /*#__PURE__*/JSBI.BigInt(0);
@@ -437,7 +441,7 @@ function currencyEquals(currencyA, currencyB) {
     return currencyA === currencyB;
   }
 }
-var WETH = (_WETH = {}, _WETH[exports.ChainId.MAINNET] = /*#__PURE__*/new Token(exports.ChainId.MAINNET, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.GOERLI] = /*#__PURE__*/new Token(exports.ChainId.GOERLI, '0x6Cc53D3AeaEe7aAfbd2Ac304AA64d017E6cb4f2a', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.SEPOLIA] = /*#__PURE__*/new Token(exports.ChainId.SEPOLIA, '0xE55a23aaFb3a712BFae5BE96E0f61C745dedf33C', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.HOPE] = /*#__PURE__*/new Token(exports.ChainId.HOPE, '0xee44150250AfF3E6aC25539765F056EDb7F85D7B', 18, 'WETH', 'Wrapper ETH'), _WETH);
+var WETH = (_WETH = {}, _WETH[exports.ChainId.MAINNET] = /*#__PURE__*/new Token(exports.ChainId.MAINNET, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.GOERLI] = /*#__PURE__*/new Token(exports.ChainId.GOERLI, '0x6Cc53D3AeaEe7aAfbd2Ac304AA64d017E6cb4f2a', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.SEPOLIA] = /*#__PURE__*/new Token(exports.ChainId.SEPOLIA, '0xE55a23aaFb3a712BFae5BE96E0f61C745dedf33C', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.HOPE] = /*#__PURE__*/new Token(exports.ChainId.HOPE, '0xee44150250AfF3E6aC25539765F056EDb7F85D7B', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.BASE] = /*#__PURE__*/new Token(exports.ChainId.BASE, '0x', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.BASE_GOERLI] = /*#__PURE__*/new Token(exports.ChainId.HOPE, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.ARBITRUM] = /*#__PURE__*/new Token(exports.ChainId.HOPE, '0x', 18, 'WETH', 'Wrapper ETH'), _WETH[exports.ChainId.ARBITRUM_GOERLI] = /*#__PURE__*/new Token(exports.ChainId.HOPE, '0xe39ab88f8a4777030a534146a9ca3b52bd5d43a3', 18, 'WETH', 'Wrapper ETH'), _WETH);
 
 var _toSignificantRoundin, _toFixedRounding;
 var Decimal = /*#__PURE__*/toFormat(_Decimal);
