@@ -61,8 +61,8 @@ export const WETH = {
   [ChainId.GOERLI]: new Token(ChainId.GOERLI, '0x6Cc53D3AeaEe7aAfbd2Ac304AA64d017E6cb4f2a', 18, 'WETH', 'Wrapper ETH'),
   [ChainId.SEPOLIA]: new Token(ChainId.SEPOLIA, '0xE55a23aaFb3a712BFae5BE96E0f61C745dedf33C', 18, 'WETH', 'Wrapper ETH'),
   [ChainId.HOPE]: new Token(ChainId.HOPE, '0xee44150250AfF3E6aC25539765F056EDb7F85D7B', 18, 'WETH', 'Wrapper ETH'),
-  [ChainId.BASE]: new Token(ChainId.BASE, '0x', 18, 'WETH', 'Wrapper ETH'),
+  // [ChainId.BASE]: new Token(ChainId.BASE, '0x9eF26B39208793Fa900d3ff4e39f344Ba117A96F', 18, 'WETH', 'Wrapper ETH'),
   [ChainId.BASE_GOERLI]: new Token(ChainId.HOPE, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapper ETH'),
-  [ChainId.ARBITRUM]: new Token(ChainId.HOPE, '0x', 18, 'WETH', 'Wrapper ETH'),
+  // [ChainId.ARBITRUM]: new Token(ChainId.HOPE, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, 'WETH', 'Wrapper ETH'),
   [ChainId.ARBITRUM_GOERLI]: new Token(ChainId.HOPE, '0xe39ab88f8a4777030a534146a9ca3b52bd5d43a3', 18, 'WETH', 'Wrapper ETH'),
 }
